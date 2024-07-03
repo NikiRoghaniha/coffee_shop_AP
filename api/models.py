@@ -51,3 +51,9 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.PROTECT)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField(default=1)
+
+
+class HomePageSlider(models.Model):
+    sort = models.IntegerField(unique=True)
+    image = models.ImageField()
+    active = models.BooleanField(default=False)
