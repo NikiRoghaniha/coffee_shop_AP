@@ -11,3 +11,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Storage(models.Model):
+    name = models.CharField(max_length=100, null=False, unique=True)
+    amount = models.PositiveIntegerField(null=False)
+
+    def __str__(self):
+        return self.name
