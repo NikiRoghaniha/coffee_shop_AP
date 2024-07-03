@@ -141,3 +141,9 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ['items', 'amount', 'created_at', 'is_takeaway']
+
+
+class PayOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['is_takeaway']

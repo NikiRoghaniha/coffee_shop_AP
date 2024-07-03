@@ -14,7 +14,7 @@ from api import models
 from api.models import User, Category, Storage, Product, HomePageSlider, Order
 from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer, CategorySerializer, \
     StorageSerializer, ProductSerializer, HomePageSliderSerializer, CategoryListSerializer, CategoryProductsSerializer, \
-    AddToCartSerializer, OrderSerializer
+    AddToCartSerializer, OrderSerializer, PayOrderSerializer
 
 KAVENEGAR_API_URL = f"https://api.kavenegar.com/v1/{os.getenv('KAVENEGAR_API_KEY')}/sms/send.json"
 
@@ -141,3 +141,15 @@ class CartView(generics.RetrieveAPIView):
 
     def get_object(self):
         return get_object_or_404(Order, user=self.request.user, is_paid=False)
+
+
+class PayOrderView(generics.UpdateAPIView):
+    serializer_class = PayOrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return get_object_or_404(Order, user=self.request.user, is_paid=False)
+
+    def perform_update(self, serializer):
+        serializer.validated_data['is_paid'] = True
+        serializer.save()
