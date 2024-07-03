@@ -123,3 +123,21 @@ class AddToCartSerializer(serializers.Serializer):
             order_item.quantity += 1
             order_item.save()
         return order_item
+
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    product_name = serializers.CharField(source='product.name', read_only=True)
+    product_price = serializers.IntegerField(source='product.price', read_only=True)
+
+    class Meta:
+        model = OrderItem
+        fields = ['product_name', 'product_price', 'quantity']
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    items = OrderItemSerializer(many=True, read_only=True)
+    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+
+    class Meta:
+        model = Order
+        fields = ['items', 'amount', 'created_at', 'is_takeaway']

@@ -4,16 +4,17 @@ import httpx
 from django.core.cache import cache
 from django.db.models import Sum
 from rest_framework import generics, status, viewsets, mixins
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from api import models
-from api.models import User, Category, Storage, Product, HomePageSlider
+from api.models import User, Category, Storage, Product, HomePageSlider, Order
 from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer, CategorySerializer, \
-    StorageSerializer, ProductSerializer, HomePageSliderSerializer, CategoryListSerializer, CategoryProductsSerializer,\
-    AddToCartSerializer
+    StorageSerializer, ProductSerializer, HomePageSliderSerializer, CategoryListSerializer, CategoryProductsSerializer, \
+    AddToCartSerializer, OrderSerializer
 
 KAVENEGAR_API_URL = f"https://api.kavenegar.com/v1/{os.getenv('KAVENEGAR_API_KEY')}/sms/send.json"
 
@@ -132,3 +133,11 @@ class CategoryListingView(mixins.RetrieveModelMixin, mixins.ListModelMixin, Gene
 class AddToCartView(generics.CreateAPIView):
     serializer_class = AddToCartSerializer
     permission_classes = [IsAuthenticated]
+
+
+class CartView(generics.RetrieveAPIView):
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return get_object_or_404(Order, user=self.request.user, is_paid=False)
