@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.models import User
+from api.models import User, Category
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -33,3 +33,9 @@ class OTPLoginSerializer(serializers.Serializer):
 class OTPVerificationSerializer(serializers.Serializer):
     phone_number = serializers.CharField(max_length=11)
     otp = serializers.CharField(max_length=6)
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name']

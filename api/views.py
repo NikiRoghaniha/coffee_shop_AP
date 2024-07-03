@@ -2,13 +2,13 @@ import os
 import random
 import httpx
 from django.core.cache import cache
-from rest_framework import generics, status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics, status, viewsets
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from api.models import User
-from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer
+from api.models import User, Category
+from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer, CategorySerializer
 
 KAVENEGAR_API_URL = f"https://api.kavenegar.com/v1/{os.getenv('KAVENEGAR_API_KEY')}/sms/send.json"
 
@@ -74,3 +74,9 @@ class OTPVerificationView(generics.CreateAPIView):
                 return Response({"message": "OTP verification failed."}, status=status.HTTP_400_BAD_REQUEST)
         except User.DoesNotExist:
             return Response({"message": "User not found."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class AdminCategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [IsAdminUser]
