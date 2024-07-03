@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -24,4 +24,5 @@ urlpatterns = [
     path('cart/', CartView.as_view(), name='cart'),
     path('order/pay/', PayOrderView.as_view(), name='pay-order'),
     path('orders/', OrderListView.as_view(), name='orders'),
+    path('', include(router.urls)),
 ]
