@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.models import User, Category, Storage, Ingredient, Product, HomePageSlider
+from api.models import User, Category, Storage, Ingredient, Product, HomePageSlider, Order, OrderItem
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -99,3 +99,27 @@ class CategoryProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['products']
+
+
+class AddToCartSerializer(serializers.Serializer):
+    product_id = serializers.IntegerField()
+
+    def validate_product_id(self, value):
+        try:
+            product = Product.objects.get(id=value)
+        except Product.DoesNotExist:
+            raise serializers.ValidationError("Product not found.")
+
+        if not product.has_enough_stock():
+            raise serializers.ValidationError("Out of stock.")
+        return value
+
+    def create(self, validated_data):
+        order, _ = Order.objects.get_or_create(user=self.context['request'].user, is_paid=False)
+        order_item, created = OrderItem.objects.get_or_create(
+            order=order, product_id=validated_data.get('product_id')
+        )
+        if not created:
+            order_item.quantity += 1
+            order_item.save()
+        return order_item

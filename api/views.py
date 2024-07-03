@@ -12,7 +12,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from api import models
 from api.models import User, Category, Storage, Product, HomePageSlider
 from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer, CategorySerializer, \
-    StorageSerializer, ProductSerializer, HomePageSliderSerializer, CategoryListSerializer, CategoryProductsSerializer
+    StorageSerializer, ProductSerializer, HomePageSliderSerializer, CategoryListSerializer, CategoryProductsSerializer,\
+    AddToCartSerializer
 
 KAVENEGAR_API_URL = f"https://api.kavenegar.com/v1/{os.getenv('KAVENEGAR_API_KEY')}/sms/send.json"
 
@@ -126,3 +127,8 @@ class CategoryListingView(mixins.RetrieveModelMixin, mixins.ListModelMixin, Gene
             return CategoryListSerializer
         elif self.action == 'retrieve':
             return CategoryProductsSerializer
+
+
+class AddToCartView(generics.CreateAPIView):
+    serializer_class = AddToCartSerializer
+    permission_classes = [IsAuthenticated]

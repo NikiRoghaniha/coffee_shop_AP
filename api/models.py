@@ -32,6 +32,17 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def has_enough_stock(self):
+        for ingredient in Ingredient.objects.filter(product=self):
+            if ingredient.storage.amount < ingredient.quantity:
+                return False
+        return True
+
+    def reduce_stock(self):
+        for ingredient in Ingredient.objects.filter(product=self):
+            ingredient.storage.amount -= ingredient.quantity
+            ingredient.storage.save()
+
 
 class Ingredient(models.Model):
     storage = models.ForeignKey(Storage, on_delete=models.PROTECT)
@@ -46,11 +57,20 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, )
     amount = models.PositiveIntegerField(default=0)
 
+    def update_amount(self):
+        self.amount = sum(item.product.price * item.quantity for item in OrderItem.objects.filter(order=self))
+        self.save()
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.PROTECT)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField(default=1)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.product.reduce_stock()
+        self.order.update_amount()
 
 
 class HomePageSlider(models.Model):
