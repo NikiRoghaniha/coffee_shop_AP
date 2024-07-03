@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.models import User, Category, Storage
+from api.models import User, Category, Storage, Ingredient, Product
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -45,3 +45,37 @@ class StorageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Storage
         fields = ['id', 'name', 'amount']
+
+
+class IngredientSerializer(serializers.ModelSerializer):
+    storage_id = serializers.PrimaryKeyRelatedField(queryset=Storage.objects.all(), source='storage')
+
+    class Meta:
+        model = Ingredient
+        fields = ['storage_id', 'quantity']
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    ingredients = IngredientSerializer(many=True, write_only=True)
+
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'description', 'image', 'price', 'category', 'ingredients']
+
+    def create(self, validated_data):
+        ingredients_data = validated_data.pop('ingredients')
+        product = super().create(validated_data)
+
+        for ingredient_data in ingredients_data:
+            Ingredient.objects.create(product=product, **ingredient_data)
+
+        return product
+
+    def update(self, instance, validated_data):
+        ingredients_data = validated_data.pop('ingredients')
+        product = super().update(instance, validated_data)
+
+        for ingredient_data in ingredients_data:
+            Ingredient.objects.create(product=product, **ingredient_data)
+
+        return product
