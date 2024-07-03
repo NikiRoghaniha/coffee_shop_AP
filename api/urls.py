@@ -3,7 +3,8 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from api.views import CreateUserView, ProfileView, OTPLoginView, OTPVerificationView, AdminCategoryViewSet, \
-    AdminStorageViewSet, AdminProductViewSet, HomePageView, CategoryListingView, AddToCartView, CartView, PayOrderView
+    AdminStorageViewSet, AdminProductViewSet, HomePageView, CategoryListingView, AddToCartView, CartView, PayOrderView,\
+    OrderListView
 
 router = DefaultRouter()
 router.register(r'admin/categories', AdminCategoryViewSet, basename='admin-categories')
@@ -22,4 +23,5 @@ urlpatterns = [
     path('cart/add/', AddToCartView.as_view(), name='add-to-cart'),
     path('cart/', CartView.as_view(), name='cart'),
     path('order/pay/', PayOrderView.as_view(), name='pay-order'),
+    path('orders/', OrderListView.as_view(), name='orders'),
 ]

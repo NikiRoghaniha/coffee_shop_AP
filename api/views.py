@@ -153,3 +153,11 @@ class PayOrderView(generics.UpdateAPIView):
     def perform_update(self, serializer):
         serializer.validated_data['is_paid'] = True
         serializer.save()
+
+
+class OrderListView(generics.ListAPIView):
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user, is_paid=True)
