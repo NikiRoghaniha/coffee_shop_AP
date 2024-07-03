@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.models import User, Category, Storage, Ingredient, Product
+from api.models import User, Category, Storage, Ingredient, Product, HomePageSlider
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -79,3 +79,9 @@ class ProductSerializer(serializers.ModelSerializer):
             Ingredient.objects.create(product=product, **ingredient_data)
 
         return product
+
+
+class HomePageSliderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HomePageSlider
+        fields = ['image']

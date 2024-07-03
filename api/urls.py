@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from api.views import CreateUserView, ProfileView, OTPLoginView, OTPVerificationView, AdminCategoryViewSet, \
-    AdminStorageViewSet, AdminProductViewSet
+    AdminStorageViewSet, AdminProductViewSet, HomePageView
 
 router = DefaultRouter()
 router.register(r'admin/categories', AdminCategoryViewSet, basename='admin-categories')
@@ -17,4 +17,5 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('otp-login/', OTPLoginView.as_view(), name='otp-login'),
     path('otp-verify/', OTPVerificationView.as_view(), name='otp-verify'),
+    path('home-page/', HomePageView.as_view(), name='home-page'),
 ]

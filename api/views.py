@@ -2,14 +2,16 @@ import os
 import random
 import httpx
 from django.core.cache import cache
+from django.db.models import Sum
 from rest_framework import generics, status, viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from api.models import User, Category, Storage, Product
+from api import models
+from api.models import User, Category, Storage, Product, HomePageSlider
 from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer, CategorySerializer, \
-    StorageSerializer, ProductSerializer
+    StorageSerializer, ProductSerializer, HomePageSliderSerializer
 
 KAVENEGAR_API_URL = f"https://api.kavenegar.com/v1/{os.getenv('KAVENEGAR_API_KEY')}/sms/send.json"
 
@@ -93,3 +95,22 @@ class AdminProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAdminUser]
+
+
+class HomePageView(generics.ListAPIView):
+    MOST_SOLD_PRODUCT_COUNT = 12
+    serializer_class = HomePageSliderSerializer
+
+    def get_queryset(self):
+        return HomePageSlider.objects.filter(active=True).order_by('sort')
+
+    def get_most_sold_products(self):
+        return Product.objects.annotate(
+            total_sold=Sum('orderitem__quantity', filter=models.Q(orderitem__order__is_paid=True))
+        ).order_by('-total_sold')[:self.MOST_SOLD_PRODUCT_COUNT]
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.serializer_class(queryset, many=True)
+        products_serializer = ProductSerializer(self.get_most_sold_products(), many=True)
+        return Response({'slider': serializer.data, 'most_sold_products': products_serializer.data})
