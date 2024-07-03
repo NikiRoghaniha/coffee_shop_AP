@@ -147,3 +147,8 @@ class PayOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ['is_takeaway']
+
+
+class ProductSalePerDaySerializer(serializers.Serializer):
+    day = serializers.DateTimeField(format="%Y-%m-%d")
+    sale_count = serializers.IntegerField()
