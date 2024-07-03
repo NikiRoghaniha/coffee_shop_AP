@@ -24,3 +24,12 @@ class UserSerializer(serializers.ModelSerializer):
         if password:
             instance.set_password(password)
         return super().update(instance, validated_data)
+
+
+class OTPLoginSerializer(serializers.Serializer):
+    phone_number = serializers.CharField(max_length=11)
+
+
+class OTPVerificationSerializer(serializers.Serializer):
+    phone_number = serializers.CharField(max_length=11)
+    otp = serializers.CharField(max_length=6)
