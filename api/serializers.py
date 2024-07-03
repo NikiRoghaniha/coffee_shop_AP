@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.models import User, Category
+from api.models import User, Category, Storage
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -39,3 +39,9 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name']
+
+
+class StorageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Storage
+        fields = ['id', 'name', 'amount']

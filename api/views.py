@@ -7,8 +7,9 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from api.models import User, Category
-from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer, CategorySerializer
+from api.models import User, Category, Storage
+from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer, CategorySerializer, \
+    StorageSerializer
 
 KAVENEGAR_API_URL = f"https://api.kavenegar.com/v1/{os.getenv('KAVENEGAR_API_KEY')}/sms/send.json"
 
@@ -79,4 +80,10 @@ class OTPVerificationView(generics.CreateAPIView):
 class AdminCategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = [IsAdminUser]
+
+
+class AdminStorageViewSet(viewsets.ModelViewSet):
+    queryset = Storage.objects.all()
+    serializer_class = StorageSerializer
     permission_classes = [IsAdminUser]
