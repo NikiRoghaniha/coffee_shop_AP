@@ -37,3 +37,17 @@ class Ingredient(models.Model):
     storage = models.ForeignKey(Storage, on_delete=models.PROTECT)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField()
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, related_name='orders', on_delete=models.CASCADE)
+    is_takeaway = models.BooleanField(default=False)
+    is_paid = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, )
+    amount = models.PositiveIntegerField(default=0)
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.PROTECT)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    quantity = models.PositiveIntegerField(default=1)
