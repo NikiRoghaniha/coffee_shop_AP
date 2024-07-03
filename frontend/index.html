@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Café</title>
+    <link rel="stylesheet" href="index_styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-icon" id="menu-icon">&#9776;</div>
+            <ul class="menu" id="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="basket.html">Basket</a></li>
+                <li><a href="shopping-history.html">Shopping History</a></li>
+                <li class="dropdown">
+                    <a href="#" class="circle">&#x1F464;</a>
+                    <div class="dropdown-content" id="auth-dropdown">
+                        <a href="signin.html" id="signin-link">Sign-in</a>
+                        <a href="signup.html" id="signup-link">Sign-up</a>
+                    </div>
+                </li>
+                <li class="dropdown hidden" id="user-dropdown">
+                    <a href="#" class="circle">&#x1F464;</a>
+                    <div class="dropdown-content">
+                        <a href="#" id="logout-link">Log out</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Welcome to Our Café</h1>
+            <p>Discover our delicious menu</p>
+        </div>
+    </header>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li data-vertical="Coffee">Coffee</li>
+            <li data-vertical="Tea">Tea</li>
+            <li data-vertical="Pastries">Pastries</li>
+            <li data-vertical="Snacks">Snacks</li>
+        </ul>
+    </div>
+    <main>
+        <section class="products">
+            <h2>Our Products</h2>
+            <div class="product-list" id="product-list">
+                <!-- Product items will be dynamically loaded here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Café. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,251 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 40px;
+    right: 0;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Specific styles for hoverable elements */
+#user-circle {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.hero {
+    background: url('hero.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    padding: 5em 0;
+    margin-bottom: 2em;
+}
+
+/* Styles for other sections and elements */
+.product-slides, .most-sold {
+    margin-bottom: 2em;
+}
+
+.product-slides h2, .most-sold h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 1em;
+    padding: 1em;
+    width: calc(25% - 2em);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product h3 {
+    margin: 0.5em 0;
+}
+
+/* Sign-in and Sign-up Pages */
+.sign-in, .sign-up {
+    max-width: 400px;
+    margin: 2em auto;
+}
+
+.sign-in h1, .sign-up h1 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 0.5em 0 0.2em;
+}
+
+input, textarea {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 0.7em;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background: #555;
+}
+
+/* Shop Management and Inventory Management Pages */
+.shop-management, .inventory-management {
+    text-align: center;
+}
+
+.shop-management p, .inventory-management p {
+    margin-bottom: 1em;
+}
+
+/* Adding New Product Page */
+.add-product {
+    max-width: 600px;
+    margin: 2em auto;
+}
+
+.add-product h1 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+/* Products Page */
+.products .product {
+    flex: 1 1 calc(25% - 2em);
+}
+
+/* Basket Page */
+.basket-items {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+.basket-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin: 1em 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.basket-item button {
+    background: #e74c3c;
+}
+
+.total {
+    text-align: right;
+}
+
+.total h2 {
+    margin-bottom: 1em;
+}
+
+.total button {
+    padding: 1em 2em;
+}
+
+/* Shopping History Page */
+.history-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-item {
+    padding: 1em;
+    margin: 1em 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .products .product {
+        width: calc(50% - 2em);
+    }
+}
+
+@media (max-width: 480px) {
+    .products .product {
+        width: calc(100% - 2em);
+    }
+
+    .basket-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .basket-item button {
+        margin-top: 1em;
+    }
+}
