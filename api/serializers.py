@@ -76,7 +76,10 @@ class ProductSerializer(serializers.ModelSerializer):
         product = super().update(instance, validated_data)
 
         for ingredient_data in ingredients_data:
-            Ingredient.objects.create(product=product, **ingredient_data)
+            ingredient, _ = Ingredient.objects.get_or_create(product=product)
+            ingredient.quantity = ingredient_data.get('quantity')
+            ingredient.storage = ingredient_data.get('storage')
+            ingredient.save()
 
         return product
 
