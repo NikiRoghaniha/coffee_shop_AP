@@ -85,3 +85,17 @@ class HomePageSliderSerializer(serializers.ModelSerializer):
     class Meta:
         model = HomePageSlider
         fields = ['image']
+
+
+class CategoryListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['name']
+
+
+class CategoryProductsSerializer(serializers.ModelSerializer):
+    products = ProductSerializer(many=True)
+
+    class Meta:
+        model = Category
+        fields = ['products']

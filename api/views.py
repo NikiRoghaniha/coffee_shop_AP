@@ -3,15 +3,16 @@ import random
 import httpx
 from django.core.cache import cache
 from django.db.models import Sum
-from rest_framework import generics, status, viewsets
+from rest_framework import generics, status, viewsets, mixins
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
+from rest_framework.viewsets import GenericViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from api import models
 from api.models import User, Category, Storage, Product, HomePageSlider
 from api.serializers import UserSerializer, OTPLoginSerializer, OTPVerificationSerializer, CategorySerializer, \
-    StorageSerializer, ProductSerializer, HomePageSliderSerializer
+    StorageSerializer, ProductSerializer, HomePageSliderSerializer, CategoryListSerializer, CategoryProductsSerializer
 
 KAVENEGAR_API_URL = f"https://api.kavenegar.com/v1/{os.getenv('KAVENEGAR_API_KEY')}/sms/send.json"
 
@@ -114,3 +115,14 @@ class HomePageView(generics.ListAPIView):
         serializer = self.serializer_class(queryset, many=True)
         products_serializer = ProductSerializer(self.get_most_sold_products(), many=True)
         return Response({'slider': serializer.data, 'most_sold_products': products_serializer.data})
+
+
+class CategoryListingView(mixins.RetrieveModelMixin, mixins.ListModelMixin, GenericViewSet):
+    queryset = Category.objects.all()
+    lookup_field = 'name'
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return CategoryListSerializer
+        elif self.action == 'retrieve':
+            return CategoryProductsSerializer
