@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Management - Café</title>
+    <link rel="stylesheet" href="css/shop_management_styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="js/admin_scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Shop Management</h1>
+            <div class="user-info">
+                <span id="admin-name">Admin Name</span>
+                <div class="circle" id="logout-circle">&#x1F464;</div>
+            </div>
+        </div>
+    </header>
+    <aside>
+        <ul>
+            <li><a href="inventory_management.html">Inventory Management</a></li>
+            <li><a href="add_product.html">Add Product</a></li>
+        </ul>
+    </aside>
+    <main>
+        <section class="chart-section">
+            <div class="chart-controls">
+                <label for="product-select">Select Product:</label>
+                <select id="product-select">
+                    <option value="coffee">Coffee</option>
+                    <option value="tea">Tea</option>
+                    <option value="pastries">Pastries</option>
+                    <option value="snacks">Snacks</option>
+                </select>
+                <label for="time-select">Select Time Period:</label>
+                <select id="time-select">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
+            <canvas id="sales-chart"></canvas>
+        </section>
+    </main>
+</body>
+</html>

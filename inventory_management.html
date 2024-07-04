@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Management - Café</title>
+    <link rel="stylesheet" href="css/inventory_management_styles.css" />
+    <script src="js/admin_scripts.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>Inventory Management</h1>
+        <div class="user-info">
+          <span id="admin-name">Admin Name</span>
+          <div class="circle" id="logout-circle">&#x1F464;</div>
+        </div>
+      </div>
+    </header>
+    <aside>
+      <ul>
+        <li><a href="shop_management.html">Shop Management</a></li>
+        <li><a href="add_product.html">Add Product</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section class="inventory-section">
+        <h2>Manage Inventory</h2>
+        <div class="ingredient">
+          <h3>Sugar</h3>
+          <div class="ingredient-details">
+            <img src="img/sugar.jpg" alt="Sugar" />
+            <div class="details">
+              <p>Current Stock: <span id="sugar-stock">100 kg</span></p>
+              <input
+                type="number"
+                id="sugar-quantity"
+                placeholder="Enter quantity"
+              />
+              <button onclick="updateInventory('sugar')">Update</button>
+            </div>
+          </div>
+        </div>
+        <div class="ingredient">
+          <h3>Raw Coffee</h3>
+          <div class="ingredient-details">
+            <img src="img/RawCoffee.jpg" alt="Raw Coffee" />
+            <div class="details">
+              <p>Current Stock: <span id="coffee-stock">50 kg</span></p>
+              <input
+                type="number"
+                id="coffee-quantity"
+                placeholder="Enter quantity"
+              />
+              <button onclick="updateInventory('coffee')">Update</button>
+            </div>
+          </div>
+        </div>
+        <div class="ingredient">
+          <h3>Flour</h3>
+          <div class="ingredient-details">
+            <img src="img/flour.jpg" alt="Flour" />
+            <div class="details">
+              <p>Current Stock: <span id="flour-stock">80 kg</span></p>
+              <input
+                type="number"
+                id="flour-quantity"
+                placeholder="Enter quantity"
+              />
+              <button onclick="updateInventory('flour')">Update</button>
+            </div>
+          </div>
+        </div>
+        <div class="ingredient">
+          <h3>Chocolate</h3>
+          <div class="ingredient-details">
+            <img src="img/chocolate.jpg" alt="Chocolate" />
+            <div class="details">
+              <p>Current Stock: <span id="chocolate-stock">40 kg</span></p>
+              <input
+                type="number"
+                id="chocolate-quantity"
+                placeholder="Enter quantity"
+              />
+              <button onclick="updateInventory('chocolate')">Update</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
