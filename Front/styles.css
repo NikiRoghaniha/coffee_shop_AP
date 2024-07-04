@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=PT+Sans+Narrow:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Shojumaru&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+.header {
+    background-color: rgb(245, 243, 243);
+}
+
+:root {
+    --text-color: #ffffff;
+    --hover-color: #0c960c;
+    --button-bg-color: #852d2d;
+    --h6-color: #b68834;
+    --blog-color: #f01c1c;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+
+
+}
+
+.nav-item {
+    margin-right: 20px;
+    color: rgb(68, 68, 51);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.nav-item i {
+    margin-right: 10px;
+}
+
+.nav-item:hover {
+    background-color: #0c960c;
+    color: white;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+
+}
+
+.logo {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    color: rgb(68, 68, 51);
+}
+
+
+/* Hide the dropdown by default */
+.dropdown {
+    display: none;
+    width: 82.734px;
+    position: absolute;
+    top: 100%; /* Position just below the menu item */
+    left: 0; /* Align to the left edge of the menu item */
+    z-index: 10; /* Ensure it's above other content */
+    background-color: rgb(161, 109, 37); /* Optional: for contrast */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: for depth */
+  }
+  
+  
+  /* Style the dropdown items */
+  .dropdown-item {
+    display: block; /* Make sure each item takes up a full line */
+    padding: 10px; /* Add some padding for spacing */
+    text-decoration: none; /* Remove underline */
+    color: #000; /* Change text color */
+  }
+  
+  /* Show the dropdown when the parent has focus or is hovered over */
+  .navbar:hover.dropdown,
+  .navbar:focus-within.dropdown {
+    display: block;
+  }
+
+
+  .dropdown-item:hover {
+    background-color: #59a2b7; /* Light gray background */
+    color: #333; /* Darker text color for contrast */
+}
+
+
+
+
+/* making slider */
+
+.slider{
+    width: 100%;
+    height: 800px;
+    background-color: brown;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.slides{
+    width: 500%;
+    height: 500px;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+
+}
+
+
+.slide {
+    width: 20%;
+    transition: 2s;
+}
+
+.slide img {
+    width: 100%;
+    height: 800px;
+}
+
+.navigation-manual{
+    position: absolute;
+    width: 800px;
+    margin-top: -40px;
+    display: flex;
+    left: 50%;
+    bottom: 10px;
+}
+
+.manual-btn {
+    border: 2px solid aqua;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background: aqua;
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+
+
+#radio2:checked ~ .first {
+    margin-left: -20%;
+}
+
+
+#radio3:checked ~ .first {
+    margin-left: -40%;
+}
+
+
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    width: 800px;
+    margin-top: 460px;
+    left: 50%;
+    bottom: 10px;
+}
+
+.navigation-auto div {
+  border: 2px solid aqua;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;  
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+  }
+
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+    background-color: aqua;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+    background-color: aqua;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+    background-color: aqua;
+}
+
+
+
+/* 12 best selling products */
+
+.section3{
+    background-image: url(../img/coffee_beans.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin-top: 30px;
+}
+
+.menu-contents{
+    width: 90%;
+    height: 100vh;
+    border: 7px double burlywood;
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-wrap: wrap;
+    display: flex;
+}
+
+/* -------- Heading Top part -------- */
+.menu-heading{
+    width: 95%;
+    height: 11vh;
+    color: rgb(49, 214, 37);
+    padding: 0px 40px;
+    position:absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-heading h2{
+    font-size: 50px;
+    margin-bottom: 0px;
+    text-align: center;
+    text-shadow: 6px 2px 5px #332221, 0 0 5px #e1853e;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(46, 3, 3);
+}
+
+/* -------- Menu items div, Bottom part -------- */
+.menu-items{
+    width: 98%;
+    height: 70vh;
+    position:absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
+    color: rgb(45, 19, 19);
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(3, auto);
+    gap: 5px 5px;
+    justify-items: center;
+}
+
+/* -------- Each Items -------- */
+.item{
+    height: 235px;
+    width: 210px;
+    background-color:burlywood;
+    border-radius: 20px;
+    padding: 10px 0px;
+    margin-top: 10px;
+    box-shadow: 4px 4px rgb(150, 71, 52);
+}
+/* ----- Image ----- */
+.img-div{
+    width: 210px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+}
+.image{
+    width: 110px;
+    height: 110px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #e1853e;
+    border-radius: 50%;
+    overflow: hidden;
+}
+/*  ----- Item name and price -----  */
+.item-detail, .quantity{
+    width: 210px;
+    height: auto;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-detail h3, .item-detail h4{
+    font-size: 18px;
+}
+
+.box-space{
+    width: 50px;
+    background-color: rgba(240, 248, 255, 0.196);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+}
+/* ----- Buttons  ----- */
+.menu-option{
+    margin: 12px;
+    width: 190px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-btn1, .menu-btn2{
+    background-color: rgb(45, 19, 19);
+    color: bisque;
+    height: 25px;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: rgb(243, 154, 132);
+    padding: 0px 6px;
+    min-width: 25px;
+    font-family:Calibri;
+}
+/* ----- Menu items Images ----- */
+.Ino1{
+    background-image: url(../img/black_coffee.jpg);
+}
+
+.Ino2{
+    background-image: url(../img/espresso.jpg);
+}
+
+.Ino3{
+    background-image: url(../img/Latte.jpg);
+}
+
+.Ino4{
+    background-image: url(../img/Cappuccino.jpg);
+}
+
+.Ino5{
+    background-image: url(../img/Americano.jpg);
+}
+
+.Ino6{
+    background-image: url(../img/Mocha.jpg);
+}
+
+.Ino7{
+    background-image: url(../img/Iced\ Coffee.jpg);
+}
+
+.Ino8{
+    background-image: url(../img/Macchiato.jpg);
+}
+
+.Ino9{
+    background-image: url(../img/Doppio.jpg);
+}
+
+.Ino10{
+    background-image: url(../img/MatchaLatte.jpg);
+}
+
+.Ino11{
+    background-image: url(../img/MatchaLatte.jpg);
+}
+
+.Ino12{
+    background-image: url(../img/MatchaLatte.jpg);
+}
+
+
+  
