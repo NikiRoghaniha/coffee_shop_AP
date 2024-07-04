@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffo Cafe</title>
+    <link rel="shortcut icon" href="img/latte-art.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="navbar-left">
+          <a href="#menu" class="nav-item menu" onclick="myFunction()"
+            ><i class="fa fa-bars"></i> Menu</a
+          >
+          <div class="dropdown" id="menu-dropdown">
+            <a href="product_page.html?category=2" class="dropdown-item">Coffee</a>
+            <a href="product_page.html?category=3" class="dropdown-item">Tea</a>
+            <a href="product_page.html?category=4" class="dropdown-item">Pastries</a>
+            <a href="product_page.html?category=5" class="dropdown-item">Snacks</a>
+          </div>
+          <a href="#records" class="nav-item" id="item2"
+            ><i class="fas fa-receipt"></i> Shopping Records</a
+          >
+          <a href="#cart" class="nav-item" id="item3"
+            ><i class="fas fa-shopping-cart"></i> Shopping Cart</a
+          >
+          <a href="sign_in.html" class="nav-item" id="login-button"
+            ><i class="fas fa-user"></i> Login</a
+          >
+        </div>
+        <div class="navbar-right">
+          <a href="#" class="logo"> <i class="fas fa-mug-hot"></i> coffee</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="slider">
+      <div class="slides">
+        <input type="radio" name="radio-btn" id="radio1" />
+        <input type="radio" name="radio-btn" id="radio2" />
+        <input type="radio" name="radio-btn" id="radio3" />
+
+        <div class="slide first">
+          <img src="img/chevanon.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="img/Macchiato.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="img/wildlittlethingsph.jpg" alt="" />
+        </div>
+
+        <div class="navigation-auto">
+          <div class="auto-btn1"></div>
+          <div class="auto-btn2"></div>
+          <div class="auto-btn3"></div>
+        </div>
+      </div>
+
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <article>
+      <div class="section3" id="menu">
+        <div class="menu-contents">
+          <!-- Heading -->
+          <div class="menu-heading">
+            <h2>Best sellers</h2>
+          </div>
+          <!-- menu body -->
+          <div class="menu-items">
+            <!-- --- Item cards --- -->
+            <div class="item cno1">
+              <div class="img-div">
+                <div class="image Ino1"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Black Coffee</h3>
+                <h4>₹75/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno2">
+              <div class="img-div">
+                <div class="image Ino2"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Espresso</h3>
+                <h4>₹80/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno3">
+              <div class="img-div">
+                <div class="image Ino3"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Latte</h3>
+                <h4>₹120/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno4">
+              <div class="img-div">
+                <div class="image Ino4"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Cappuccino</h3>
+                <h4>₹190/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno5">
+              <div class="img-div">
+                <div class="image Ino5"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Americano</h3>
+                <h4>₹140/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno6">
+              <div class="img-div">
+                <div class="image Ino6"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Mocha</h3>
+                <h4>₹200/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno7">
+              <div class="img-div">
+                <div class="image Ino7"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Iced Coffee</h3>
+                <h4>₹150/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno8">
+              <div class="img-div">
+                <div class="image Ino8"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Macchiato</h3>
+                <h4>₹150/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno9">
+              <div class="img-div">
+                <div class="image Ino9"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Doppio</h3>
+                <h4>₹100/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno10">
+              <div class="img-div">
+                <div class="image Ino10"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Matcha Latte</h3>
+                <h4>₹230/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno11">
+              <div class="img-div">
+                <div class="image Ino11"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Black Coffee</h3>
+                <h4>₹75/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+
+            <div class="item cno12">
+              <div class="img-div">
+                <div class="image Ino12"></div>
+              </div>
+
+              <div class="item-detail">
+                <h3>Espresso</h3>
+                <h4>₹80/-</h4>
+              </div>
+
+              <div class="quantity">
+                <i class="ri-indeterminate-circle-line"></i>
+                <div class="box-space">0</div>
+                <i class="ri-add-circle-line"></i>
+              </div>
+
+              <div class="menu-option">
+                <button type="button" class="menu-btn1">Add to cart</button>
+                <button type="button" class="menu-btn2">Buy now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <script src="js/filter.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
